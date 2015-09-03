@@ -19,6 +19,7 @@
   $<%= @book.price.to_f / 100 %>
 </p>
 
+<% if current_user %>
 <%= form_tag buy_path(slug: @book.slug) do %>
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -30,7 +31,8 @@
     data-locale="auto">
   </script>
 <% end %>
-
+<% else %>
+<p>You must be logged in to make a purchase.</p>
 </div>
 
 </div>
